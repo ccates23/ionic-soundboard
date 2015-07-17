@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+    <link rel="stylesheet" type="text/css" href="css/cssshake.css">
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
@@ -42,14 +43,14 @@
       <ion-content ng-controller='Main'>
         <div class="container">
           <div class="image-section">
-            <img src='../img/mad-scientist.png' class='header-image'>
+            <img src='../img/mad-scientist.png' class='header-image shake shake-slow'>
           </div>
           <div class="header-section">
             <h2 class="page-header"> Welcome to Mr. Mason's Mystical Sound Emporium </h2>
             <p class="subheader">Click the magic button below to start your adventure</p>
           </div>
           <div class="button-section">
-            <button class="button button-outline button-dark" ng-click="play('sound1')">
+            <button class="button button-outline button-dark shake shake-hard" ng-click="play('sound1')">
               Play Sound <i class="ion ion-volume-high"></i>
             </button>
             <button class="button button-outline button-dark" ng-click="play('sound2')">

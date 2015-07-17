@@ -49,11 +49,45 @@ ion-content {
 }
 
 .header-image {
+  height: 200px;
+  width: 200px;
   max-height: 200px;
   border-radius: 250px;
   margin: 20px 0 0 0;
   display: inline-block;
   border: 9px solid #74C0FF;
+  background-image:
+
+    -webkit-transition: all .25s ease;
+     -moz-transition: all .25s ease;
+       -o-transition: all .25s ease;
+      -ms-transition: all .25s ease;
+          transition: all .25s ease;
+
+}
+
+.header-image:hover {
+
+    -webkit-transform: rotate(480deg);
+     -moz-transform: rotate(480deg);
+       -o-transform: rotate(480deg);
+      -ms-transform: rotate(480deg);
+          transform: rotate(480deg);
+}
+
+.overlay {
+    background-color: rgba(55, 155, 55, 0.5);
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    right:0;
+    top:0;
+    z-index: 1;
+}
+
+.header-image:hover {
+
 }
 
 .image-section {
