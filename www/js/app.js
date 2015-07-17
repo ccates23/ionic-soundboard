@@ -9,11 +9,30 @@ angular.module('starter', ['ionic'])
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
+    if(window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
   });
+})
+
+.controller('Main', function($scope){
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+  var sound1;
+  var doforlove;
+
+  function onDeviceReady() {
+    //console.log("prepping sounds");
+    sound1 = new Media("sounds/sound-1.mp3");
+    doforlove = new Media("sounds/doforlove.mp3");
+  }
+
+  $scope.play = function(soundName) {
+    //console.log('playing sound');
+    eval(soundName + ".play()");
+    console.log(soundName);
+  }
 })
