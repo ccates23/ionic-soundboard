@@ -22,16 +22,12 @@ angular.module('starter', ['ionic'])
   document.addEventListener("deviceready", onDeviceReady, false);
 
   var sound1;
-  var doforlove;
 
   function onDeviceReady() {
-    //console.log("prepping sounds");
     sound1 = new Media("sounds/sound-1.mp3");
-    doforlove = new Media("sounds/doforlove.mp3");
   }
 
   $scope.play = function(soundName) {
-    //console.log('playing sound');
     eval(soundName + ".play()");
     console.log(soundName);
   }
