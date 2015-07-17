@@ -24,11 +24,16 @@ angular.module('starter', ['ionic'])
   var sound1;
   var sound2;
   var sound3;
+  var sound4;
+  var sound5;
 
   function onDeviceReady() {
     sound1 = new Media("sounds/sound-1.mp3");
     sound2 = new Media("sounds/drum.mp3");
     sound3 = new Media("sounds/gthang.mp3");
+    sound4 = new Media("sounds/ps1.mp3");
+    sound5 = new Media("sounds/leviosa.mp3");
+
 
   }
 
