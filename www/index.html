@@ -5,6 +5,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -24,18 +27,25 @@
   <body ng-app="starter">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic-Soundboard</h1>
+      <ion-header-bar class="bar-energized">
+        <h1 class="title">Sound Emporium</h1>
       </ion-header-bar>
+
       <ion-content ng-controller='Main'>
-
-      <button class="button button-outline button-dark" ng-click="play('sound1')">
-        Play Sound
-      </button>
-
-      <button class="button button-outline button-dark" ng-click="play('doforlove')">
-        Play Sound
-      </button>
+        <div class="container">
+          <div class="image-section">
+            <img src='../img/mad-scientist.png' class='header-image'>
+          </div>
+          <div class="header-section">
+            <h2 class="page-header"> Welcome to Mr. Mason's Mystical Sound Emporium </h2>
+            <p class="subheader">Click the magic button below to start your adventure</p>
+          </div>
+          <div class="button-section">
+            <button class="button button-outline button-dark" ng-click="play('sound1')">
+              Play Sound <i class="ion ion-volume-high"></i>
+            </button>
+          </div>
+        </div>
 
       </ion-content>
     </ion-pane>
