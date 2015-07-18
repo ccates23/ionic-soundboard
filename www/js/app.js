@@ -21,23 +21,45 @@ angular.module('starter', ['ionic'])
 .controller('Main', function($scope){
   document.addEventListener("deviceready", onDeviceReady, false);
 
-  var sound1;
-  var sound2;
-  var sound3;
-  var sound4;
-  var sound5;
+  var soundIsPlaying = false;
+  var playingSound;
 
-  function onDeviceReady() {
-    sound1 = new Media("sounds/sound-1.mp3");
-    sound2 = new Media("sounds/drum.mp3");
-    sound3 = new Media("sounds/gthang.mp3");
-    sound4 = new Media("sounds/ps1.mp3");
-    sound5 = new Media("sounds/leviosa.mp3");
-
-
+  for (var i = 1; i < 6; i++) {
+    eval("var sound" + i);
+    // eval("var sound" + i + "_p = false");
   }
 
+  function onDeviceReady() {
+    sound1 = new Media("sounds/sound-1.mp3", null, null, mediaStatusCallback);
+    sound2 = new Media("sounds/drum.mp3", null, null, mediaStatusCallback);
+    sound3 = new Media("sounds/gthang.mp3", null, null, mediaStatusCallback);
+    sound4 = new Media("sounds/ps1.mp3", null, null, mediaStatusCallback);
+    sound5 = new Media("sounds/leviosa.mp3", null, null, mediaStatusCallback);
+  }
+
+  // this behaves like a loop and constantly updates (i dunno why?)
+  var mediaStatusCallback = function(status) {
+    if (status === 4) {
+      soundIsPlaying = false;
+      console.log($scope.playingSound + " is done playing");
+      // get stop button to change back!?
+    } else {
+      soundIsPlaying = true;
+    }
+  }
+
+  // soundName: str
+  // $scope.playingSound: str
+  // soundIsPlaying: bool
   $scope.play = function(soundName) {
+    if (soundIsPlaying) {
+      eval($scope.playingSound + ".stop()");
+      if (soundName === $scope.playingSound) {
+        $scope.playingSound = "";
+        return;
+      }
+    }
+    $scope.playingSound = soundName;
     eval(soundName + ".play()");
   }
 })
