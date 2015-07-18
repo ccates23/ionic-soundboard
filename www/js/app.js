@@ -22,11 +22,10 @@ angular.module('starter', ['ionic'])
   document.addEventListener("deviceready", onDeviceReady, false);
 
   var soundIsPlaying = false;
-  var playingSound;
+  var clickedAnotherDidntStopFirst;
 
   for (var i = 1; i < 6; i++) {
     eval("var sound" + i);
-    // eval("var sound" + i + "_p = false");
   }
 
   function onDeviceReady() {
@@ -41,7 +40,11 @@ angular.module('starter', ['ionic'])
   var mediaStatusCallback = function(status) {
     if (status === 4) {
       soundIsPlaying = false;
-      console.log($scope.playingSound + " is done playing");
+      if (!clickedAnotherDidntStopFirst) {
+        $scope.playingSound = null;
+        $scope.$apply();
+      }
+      //console.log($scope.playingSound + " is done playing");
       // get stop button to change back!?
     } else {
       soundIsPlaying = true;
@@ -51,15 +54,22 @@ angular.module('starter', ['ionic'])
   // soundName: str
   // $scope.playingSound: str
   // soundIsPlaying: bool
+
   $scope.play = function(soundName) {
-    if (soundIsPlaying) {
+    if (soundIsPlaying && soundName === $scope.playingSound) {
       eval($scope.playingSound + ".stop()");
-      if (soundName === $scope.playingSound) {
-        $scope.playingSound = "";
-        return;
-      }
+      $scope.playingSound = null;
+      return;
+    } else if (soundIsPlaying) {
+      eval($scope.playingSound + ".stop()");
+      $scope.playingSound = soundName;
+      clickedAnotherDidntStopFirst = true;
+      setTimeout(function(){clickedAnotherDidntStopFirst = false}, 1);
+      eval(soundName + ".play()");
+    } else {
+      $scope.playingSound = soundName;
+      eval(soundName + ".play()");
     }
-    $scope.playingSound = soundName;
-    eval(soundName + ".play()");
   }
+
 })
