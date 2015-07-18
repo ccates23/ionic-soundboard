@@ -41,10 +41,10 @@ angular.module('starter', ['ionic'])
     if (status === 4) {
       soundIsPlaying = false;
       if (!clickedAnotherDidntStopFirst) {
-        $scope.playingSound = null;
+        $scope.soundThatsPlaying = null;
         $scope.$apply();
       }
-      //console.log($scope.playingSound + " is done playing");
+      //console.log($scope.soundThatsPlaying + " is done playing");
       // get stop button to change back!?
     } else {
       soundIsPlaying = true;
@@ -52,22 +52,22 @@ angular.module('starter', ['ionic'])
   }
 
   // soundName: str
-  // $scope.playingSound: str
+  // $scope.soundThatsPlaying: str
   // soundIsPlaying: bool
 
   $scope.play = function(soundName) {
-    if (soundIsPlaying && soundName === $scope.playingSound) {
-      eval($scope.playingSound + ".stop()");
-      $scope.playingSound = null;
+    if (soundIsPlaying && soundName === $scope.soundThatsPlaying) {
+      eval($scope.soundThatsPlaying + ".stop()");
+      $scope.soundThatsPlaying = null;
       return;
     } else if (soundIsPlaying) {
-      eval($scope.playingSound + ".stop()");
-      $scope.playingSound = soundName;
+      eval($scope.soundThatsPlaying + ".stop()");
+      $scope.soundThatsPlaying = soundName;
       clickedAnotherDidntStopFirst = true;
       setTimeout(function(){clickedAnotherDidntStopFirst = false}, 1);
       eval(soundName + ".play()");
     } else {
-      $scope.playingSound = soundName;
+      $scope.soundThatsPlaying = soundName;
       eval(soundName + ".play()");
     }
   }
